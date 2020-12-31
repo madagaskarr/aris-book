@@ -1,13 +1,30 @@
 package io.tigranes.arisbook.providers
 
 import io.tigranes.arisbook.model.BesedaCardProtocolTemplate
+import io.tigranes.arisbook.model.BesedaChapterCardProtocolTemplate
+import io.tigranes.arisbook.model.BesedaCoverDescriptionTemplate
+import io.tigranes.arisbook.model.DashboardCardProtocol
 import io.tigranes.arisbook.repositories.BookRepository
 import javax.inject.Inject
 
 class BookMockProvider @Inject constructor(): BookRepository {
 
-    override fun getAllBesedas(): List<BesedaCardProtocolTemplate> {
+    override fun getAllBesedas(): List<DashboardCardProtocol> {
         return listOf(
+            BesedaCoverDescriptionTemplate(
+                besedaNumber = "КУЛЬТУРОЛОГИЧЕСКИЕ БЕСЕДЫ О ПОЛИТИЧЕСКОЙ ИСТОРИИ АРМЯН",
+                besedaTitle = "ПРОГУЛКИ ПО СТОЛЕТИЯМ"
+            ),
+            BesedaChapterCardProtocolTemplate(
+                besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
+                chapterTitle = "БЕСЕДА ПЕРВАЯ - Часть Первая",
+                chapterImageSource = "https://static.wixstatic.com/media/42d421_2bd296e843e540e6be4f744ee20b06ac~mv2_d_2048_1371_s_2.jpg",
+                description = "Формирование и развитие армянской идентичности протекало в границах региона, известного под названием " +
+                        "«Армянское нагорье». Это географическое обозначение появилось в третьей четверти XIX в.",
+                firstTag = "ИСТОРИЯ",
+                secondtag = "НАЧАЛО",
+                ctaTitle = "Поделиться"
+            ),
             BesedaCardProtocolTemplate(
                 besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
                 besedaNumber = "БЕСЕДА ПЕРВАЯ",

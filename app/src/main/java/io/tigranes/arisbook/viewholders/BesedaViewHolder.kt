@@ -6,10 +6,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import io.tigranes.arisbook.R
-import io.tigranes.arisbook.dashboard.GenericAdapter
+import io.tigranes.arisbook.GenericAdapter
+import io.tigranes.arisbook.dashboard.OnDashboardItemClickedInterface
 import io.tigranes.arisbook.model.BesedaCardProtocolTemplate
 
-class BesedaViewHolder(private var layoutView: View): RecyclerView.ViewHolder(layoutView), GenericAdapter.Binder<BesedaCardProtocolTemplate> {
+class BesedaViewHolder(private var layoutView: View, private val clickHandler: OnDashboardItemClickedInterface): RecyclerView.ViewHolder(layoutView), GenericAdapter.Binder<BesedaCardProtocolTemplate> {
 
     private var besedaTitleTextView: TextView = layoutView.findViewById(R.id._beseda_title_text_view)
     private var besedaNumberTextView: TextView = layoutView.findViewById(R.id._beseda_number_text_view)
@@ -22,6 +23,10 @@ class BesedaViewHolder(private var layoutView: View): RecyclerView.ViewHolder(la
         besedaDescriptionTextView.text = data.description
         Glide.with(layoutView.context).load(data.besedaCoverImageSource).into(besedaCoverImageView);
 
+        itemView.setOnClickListener {
+            clickHandler.onDashboardItemClicked(12)
+
+        }
     }
 
 }

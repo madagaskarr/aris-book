@@ -1,4 +1,4 @@
-package io.tigranes.arisbook.dashboard
+package io.tigranes.arisbook
 
 import android.view.LayoutInflater
 import android.view.View

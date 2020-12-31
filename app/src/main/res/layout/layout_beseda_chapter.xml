@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="6dp"
+    android:paddingBottom="16dp"
+    android:background="@color/dark_black"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/_beseda_with_chapter_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="В ДРЕВНЕМ КОТЛЕ"
+        android:fontFamily="@font/pt_sans"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:lineHeight="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/_chapter_title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="БЕСЕДА ПЕРВАЯ - Часть Первая"
+        android:textColor="@color/ash_gray"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_beseda_with_chapter_title_text_view" />
+
+    <ImageView
+        android:id="@+id/_image_view"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_chapter_title_text_view" />
+
+    <TextView
+        android:id="@+id/_starting_text_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:maxLines="7"
+        android:fontFamily="@font/roboto_slab_light"
+        android:text="Формирование и развитие армянской идентичности протекало в границах региона, известного под названием
+«Армянское нагорье». Это географическое обозначение появилось в третьей четверти XIX в."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_image_view" />
+
+    <LinearLayout
+        android:id="@+id/_tag_lin_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:paddingEnd="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_starting_text_text_view">
+
+        <TextView
+            android:id="@+id/_first_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@color/purple_700"
+            android:padding="10dp"
+            android:text="ИСТОРИЯ"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/_starting_text_text_view" />
+
+        <TextView
+            android:id="@+id/_second_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@color/purple_700"
+            android:padding="10dp"
+            android:text="АНАЛИТИКА"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/_starting_text_text_view" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/_share_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:background="@color/ash_gray"
+        android:padding="10dp"
+        android:text="SHARE"
+        android:textColor="@color/black"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_starting_text_text_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
