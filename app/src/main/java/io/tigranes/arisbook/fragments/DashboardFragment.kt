@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.android.support.DaggerFragment
 import io.tigranes.arisbook.ActionHandler
 import io.tigranes.arisbook.R
-import io.tigranes.arisbook.dashboard.MyAdapter
+import io.tigranes.arisbook.MyAdapter
 import io.tigranes.arisbook.viewmodels.DashboardViewModel
 import javax.inject.Inject
 

@@ -1,4 +1,4 @@
-package io.tigranes.arisbook.dashboard
+package io.tigranes.arisbook
 
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -9,9 +9,7 @@ import io.tigranes.arisbook.R
 import io.tigranes.arisbook.fragments.ChaptersFragment
 import io.tigranes.arisbook.model.DashboardCardProtocol
 import io.tigranes.arisbook.model.DashboardCardTemplate
-import io.tigranes.arisbook.viewholders.BesedaChapterViewHolder
-import io.tigranes.arisbook.viewholders.BesedaViewHolder
-import io.tigranes.arisbook.viewholders.CoverImageViewHolder
+import io.tigranes.arisbook.viewholders.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -29,6 +27,10 @@ class MyAdapter @Inject constructor(): GenericAdapter<DashboardCardProtocol>() {
             DashboardCardTemplate.BESEDA -> R.layout.layout_beseda_card_view
             DashboardCardTemplate.COVER_IMAGE -> R.layout.layout_full_image
             DashboardCardTemplate.CHAPTER -> R.layout.layout_beseda_chapter
+            DashboardCardTemplate.QUESTION -> R.layout.layout_question
+            DashboardCardTemplate.PARAGRAPH -> R.layout.layout_paragraph
+            DashboardCardTemplate.SINGLE_IMAGE -> R.layout.layout_single_image
+            DashboardCardTemplate.TESTIMONIAL -> R.layout.layout_testimonial
 
         }
     }
@@ -39,6 +41,10 @@ class MyAdapter @Inject constructor(): GenericAdapter<DashboardCardProtocol>() {
             R.layout.layout_beseda_card_view -> BesedaViewHolder(view, actionHandler)
             R.layout.layout_full_image -> CoverImageViewHolder(view)
             R.layout.layout_beseda_chapter -> BesedaChapterViewHolder(view, actionHandler)
+            R.layout.layout_question -> QuestionViewHolder(view)
+            R.layout.layout_paragraph -> ParagrapViewHolder(view)
+            R.layout.layout_single_image -> SingleImageViewHolder(view)
+            R.layout.layout_testimonial -> TestimonialViewHolder(view)
             else -> BesedaViewHolder(view, actionHandler)
         }
     }
