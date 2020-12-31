@@ -10,11 +10,11 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [
     AndroidInjectionModule::class,
-//    ApplicationModule::class,
-//    ActivityModule::class,
-//    FragmentModule::class,
-//    ViewModelFactoryModule::class,
-//    ViewModelModule::class,
+    ApplicationModule::class,
+    ActivityModule::class,
+    FragmentModule::class,
+    ViewModelFactoryModule::class,
+    ViewModelModule::class,
 //    FirestoreModule::class,
 ])
 interface ApplicationComponent: AndroidInjector<ArisApplication> {
