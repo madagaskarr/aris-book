@@ -5,28 +5,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.android.support.DaggerFragment
+import io.tigranes.arisbook.ActionHandler
 import io.tigranes.arisbook.R
-import io.tigranes.arisbook.dashboard.OnDashboardItemClickedInterface
+import io.tigranes.arisbook.dashboard.MyAdapter
 import io.tigranes.arisbook.viewmodels.DashboardViewModel
 import javax.inject.Inject
 
-class DashboardFragment: DaggerFragment(), OnDashboardItemClickedInterface {
+class DashboardFragment: DaggerFragment() {
 
-    interface DashboardClickProtocole {
-        fun onBesedaClicked(besedaPosition: Int)
-    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    @Inject
+    lateinit var adapter: MyAdapter
+
     private lateinit var dashboardViewModel: DashboardViewModel
     private lateinit var dashboardRecyclerView: RecyclerView
-    private lateinit var dashboardClickProtocoleListener: DashboardClickProtocole
+    private lateinit var actionHandler: ActionHandler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +40,11 @@ class DashboardFragment: DaggerFragment(), OnDashboardItemClickedInterface {
 
         dashboardRecyclerView = view.findViewById(R.id._dashboard_recycler_view)
         dashboardRecyclerView.layoutManager = LinearLayoutManager(context)
-        dashboardRecyclerView.adapter = dashboardViewModel.getAdapter()
-        dashboardViewModel.getAdapter().setDashboardItemClickedInterface(this)
-        dashboardViewModel.getAllBesedas()
-        dashboardViewModel.updateAdapter()
+        dashboardRecyclerView.adapter = adapter
+        adapter.setActionHandler(actionHandler)
+        adapter.setItems(dashboardViewModel.getAllBesedas())
+
+
 
         return view
     }
@@ -52,7 +53,7 @@ class DashboardFragment: DaggerFragment(), OnDashboardItemClickedInterface {
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        dashboardClickProtocoleListener = context as DashboardClickProtocole
+        actionHandler = context as ActionHandler
 
     }
 
@@ -61,7 +62,4 @@ class DashboardFragment: DaggerFragment(), OnDashboardItemClickedInterface {
         fun newInstance() = DashboardFragment()
     }
 
-    override fun onDashboardItemClicked(position: Int) {
-        dashboardClickProtocoleListener.onBesedaClicked(position)
-    }
 }

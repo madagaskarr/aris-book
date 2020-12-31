@@ -5,11 +5,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.tigranes.arisbook.ActionHandler
 import io.tigranes.arisbook.R
 import io.tigranes.arisbook.GenericAdapter
 import io.tigranes.arisbook.model.BesedaChapterCardProtocolTemplate
 
-class BesedaChapterViewHolder(private var layoutView: View): RecyclerView.ViewHolder(layoutView), GenericAdapter.Binder<BesedaChapterCardProtocolTemplate> {
+class BesedaChapterViewHolder(private var layoutView: View,  private val actionHandler: ActionHandler): RecyclerView.ViewHolder(layoutView), GenericAdapter.Binder<BesedaChapterCardProtocolTemplate> {
 
     private var besedaTitle: TextView = layoutView.findViewById(R.id._beseda_with_chapter_title_text_view)
     private var chapterTitle: TextView = layoutView.findViewById(R.id._chapter_title_text_view)
@@ -27,6 +28,10 @@ class BesedaChapterViewHolder(private var layoutView: View): RecyclerView.ViewHo
         tagTwoTitle.text = data.secondtag
         shareCTATitle.text = data.ctaTitle
         Glide.with(layoutView.context).load(data.chapterImageSource).into(besedaCoverImageView)
+
+        itemView.setOnClickListener {
+            actionHandler.onChapterClicked(data.ID ?: "this is mock ID for CHAPTER")
+        }
 
     }
 

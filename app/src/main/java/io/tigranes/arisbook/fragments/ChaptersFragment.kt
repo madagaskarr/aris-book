@@ -1,59 +1,73 @@
 package io.tigranes.arisbook.fragments
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import dagger.android.support.DaggerFragment
+import io.tigranes.arisbook.ActionHandler
 import io.tigranes.arisbook.R
+import io.tigranes.arisbook.dashboard.MyAdapter
+import io.tigranes.arisbook.viewmodels.ChaptersViewModel
+import javax.inject.Inject
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val CHAPTER_ID_BUNDLE_KEY = "CHAPTER_ID_BUNDLE_KEY"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ChaptersFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ChaptersFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class ChaptersFragment : DaggerFragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+
+    @Inject
+    lateinit var adapter: MyAdapter
+
+    private lateinit var chaptersViewModel: ChaptersViewModel
+    private lateinit var dashboardRecyclerView: RecyclerView
+    private lateinit var actionHandler: ActionHandler
+
+    private var chapterID: String? = null
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        actionHandler = context as ActionHandler
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            chapterID = it.getString(CHAPTER_ID_BUNDLE_KEY)
         }
+
+        chaptersViewModel = viewModelFactory.create(ChaptersViewModel::class.java)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chapters, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.fragment_chapters, container, false)
+
+
+        dashboardRecyclerView = view.findViewById(R.id._chapters_recycler_view)
+        dashboardRecyclerView.layoutManager = LinearLayoutManager(context)
+        dashboardRecyclerView.adapter = adapter
+        adapter.setActionHandler(actionHandler)
+        adapter.setItems(chaptersViewModel.getAllBesedas())
+
+        return view
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChaptersFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChaptersFragment().apply {
+        fun newInstance(chhapterID: String) = ChaptersFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(CHAPTER_ID_BUNDLE_KEY, chapterID)
                 }
             }
     }

@@ -15,16 +15,6 @@ class BookMockProvider @Inject constructor(): BookRepository {
                 besedaNumber = "КУЛЬТУРОЛОГИЧЕСКИЕ БЕСЕДЫ О ПОЛИТИЧЕСКОЙ ИСТОРИИ АРМЯН",
                 besedaTitle = "ПРОГУЛКИ ПО СТОЛЕТИЯМ"
             ),
-            BesedaChapterCardProtocolTemplate(
-                besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
-                chapterTitle = "БЕСЕДА ПЕРВАЯ - Часть Первая",
-                chapterImageSource = "https://static.wixstatic.com/media/42d421_2bd296e843e540e6be4f744ee20b06ac~mv2_d_2048_1371_s_2.jpg",
-                description = "Формирование и развитие армянской идентичности протекало в границах региона, известного под названием " +
-                        "«Армянское нагорье». Это географическое обозначение появилось в третьей четверти XIX в.",
-                firstTag = "ИСТОРИЯ",
-                secondtag = "НАЧАЛО",
-                ctaTitle = "Поделиться"
-            ),
             BesedaCardProtocolTemplate(
                 besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
                 besedaNumber = "БЕСЕДА ПЕРВАЯ",
@@ -184,6 +174,42 @@ class BookMockProvider @Inject constructor(): BookRepository {
                 besedaNumber = "БЕСЕДА ДВАДЦАТЬ ЧЕТВЕРТАЯ",
                 besedaCoverImageSource = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ae383415104891.562f2971156e8.jpg",
                 description = "БЕСЕДА ДВАДЦАТЬ ЧЕТВЕРТАЯ Итак, в самом начале девяностых годов образовались две формы армянской государственности – РА и НКР."),
+        )
+    }
+
+    override fun getAllChaptersForBeseda(ID: String): List<DashboardCardProtocol> {
+        return listOf(
+            BesedaChapterCardProtocolTemplate(
+                besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
+                chapterTitle = "БЕСЕДА ПЕРВАЯ - Часть Первая",
+                chapterImageSource = "https://static.wixstatic.com/media/42d421_2bd296e843e540e6be4f744ee20b06ac~mv2_d_2048_1371_s_2.jpg",
+                description = "Формирование и развитие армянской идентичности протекало в границах региона, известного под названием " +
+                        "«Армянское нагорье». Это географическое обозначение появилось в третьей четверти XIX в.",
+                firstTag = "ИСТОРИЯ",
+                secondtag = "НАЧАЛО",
+                ctaTitle = "Поделиться"
+            ),
+            BesedaChapterCardProtocolTemplate(
+                besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
+                chapterTitle = "БЕСЕДА ПЕРВАЯ - Часть Вторая",
+                chapterImageSource = "https://mir-s3-cdn-cf.behance.net/project_modules/disp/ae383415104891.562f2971156e8.jpg",
+                description = "Арахе удалось воцариться в Вавилоне. Какой позиции придерживаются историки относительно деятельности " +
+                        "этого бунтаря. Бехистунская надпись представляет его только в качестве «армянина – вавилонского мятежника», " +
+                        "выдававшего себя за Навуходоносора IV, сына Набонида.",
+                firstTag = "ИСТОРИЯ",
+                secondtag = "НАЧАЛО",
+                ctaTitle = "Поделиться"
+            ),
+            BesedaChapterCardProtocolTemplate(
+                besedaTitle = "В ДРЕВНЕМ КОТЛЕ",
+                chapterTitle = "БЕСЕДА ПЕРВАЯ - Часть Третья",
+                chapterImageSource = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTkRRtHnWcxBl9gGjTnL61UqG9Ah9kUCea-g&usqp=CAU",
+                description = "«Отступление десяти тысяч греков» – один из первых памятников, описывающих весьма обстоятельно уклад " +
+                        "жизни отдельных земель Армении. Что представляло собой это отступление и чем оно было вызвано?",
+                firstTag = "ИСТОРИЯ",
+                secondtag = "НАЧАЛО",
+                ctaTitle = "Поделиться"
+            ),
         )
     }
 }

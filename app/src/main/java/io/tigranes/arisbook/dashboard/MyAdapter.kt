@@ -3,8 +3,10 @@ package io.tigranes.arisbook.dashboard
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import io.tigranes.arisbook.ActionHandler
 import io.tigranes.arisbook.GenericAdapter
 import io.tigranes.arisbook.R
+import io.tigranes.arisbook.fragments.ChaptersFragment
 import io.tigranes.arisbook.model.DashboardCardProtocol
 import io.tigranes.arisbook.model.DashboardCardTemplate
 import io.tigranes.arisbook.viewholders.BesedaChapterViewHolder
@@ -14,12 +16,12 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DashboardAdapter @Inject constructor(): GenericAdapter<DashboardCardProtocol>() {
+class MyAdapter @Inject constructor(): GenericAdapter<DashboardCardProtocol>() {
 
-    private lateinit var onDashboardItemClickedInterface: OnDashboardItemClickedInterface
+    private lateinit var actionHandler: ActionHandler
 
-    fun setDashboardItemClickedInterface(fragment: Fragment) {
-        onDashboardItemClickedInterface = fragment as OnDashboardItemClickedInterface
+    fun setActionHandler(actionHandler: ActionHandler) {
+        this.actionHandler = actionHandler
     }
 
     override fun getLayoutId(position: Int, descriptionProtocole: DashboardCardProtocol): Int {
@@ -34,10 +36,10 @@ class DashboardAdapter @Inject constructor(): GenericAdapter<DashboardCardProtoc
     override fun getViewHolder(view: View, viewType: Int): RecyclerView.ViewHolder {
 
         return when(viewType) {
-            R.layout.layout_beseda_card_view -> BesedaViewHolder(view, onDashboardItemClickedInterface)
+            R.layout.layout_beseda_card_view -> BesedaViewHolder(view, actionHandler)
             R.layout.layout_full_image -> CoverImageViewHolder(view)
-            R.layout.layout_beseda_chapter -> BesedaChapterViewHolder(view)
-            else -> BesedaViewHolder(view, onDashboardItemClickedInterface)
+            R.layout.layout_beseda_chapter -> BesedaChapterViewHolder(view, actionHandler)
+            else -> BesedaViewHolder(view, actionHandler)
         }
     }
 

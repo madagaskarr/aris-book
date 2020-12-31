@@ -10,15 +10,16 @@ import dagger.android.support.DaggerAppCompatActivity
 import io.tigranes.arisbook.fragments.ChaptersFragment
 import io.tigranes.arisbook.fragments.DashboardFragment
 
-class MainActivity: DaggerAppCompatActivity(),
-    BottomNavigationView.OnNavigationItemSelectedListener,
-    DashboardFragment.DashboardClickProtocole,
-    ChaptersFragment.DashboardClickProtocole {
+class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, ActionHandler {
+
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        bottomNavigationView = findViewById(R.id._bottom_nav_bar)
+        bottomNavigationView.setOnNavigationItemSelectedListener(this)
         startFragmentTransaction(DashboardFragment.newInstance())
 
 
@@ -57,7 +58,9 @@ class MainActivity: DaggerAppCompatActivity(),
             .commit()
     }
 
-    override fun onBesedaClicked(besedaPosition: Int) {
+
+    override fun onDashboardBesedaClicked(besedaID: String) {
+        Toast.makeText(this,"BESEDA - $besedaID", Toast.LENGTH_SHORT).show()
         supportFragmentManager
             .beginTransaction()
             .addToBackStack("ChaptersFragment")
@@ -65,6 +68,8 @@ class MainActivity: DaggerAppCompatActivity(),
             .commit()
     }
 
-    override fun onChapterClicked(chapterPosition: Int) {
+    override fun onChapterClicked(chpterID: String) {
+        Toast.makeText(this, chpterID, Toast.LENGTH_SHORT).show()
     }
+
 }
