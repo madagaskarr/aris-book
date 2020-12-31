@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "350940598060",
+    "project_id": "aris-book",
+    "storage_bucket": "aris-book.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350940598060:android:e6fc32f61bcb267df82689",
+        "android_client_info": {
+          "package_name": "io.tigranes.arisbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350940598060-85cblpnr900pa1kpbb7ni0pc4id0o56e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq9xnM_mCjUsPkRpbGrgvc12IN6ApY5tY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350940598060-85cblpnr900pa1kpbb7ni0pc4id0o56e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
