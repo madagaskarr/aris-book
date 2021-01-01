@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/black"
     tools:context=".fragments.ChaptersFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,7 +15,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/_chapters_recycler_view"
             android:layout_width="match_parent"
-            android:background="@color/dark_black"
+            android:layout_marginTop="16dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

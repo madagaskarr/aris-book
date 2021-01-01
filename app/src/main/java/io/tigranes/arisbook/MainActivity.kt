@@ -33,6 +33,20 @@ class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigation
 
     }
 
+    override fun onBackPressed() {
+        if (bottomView.visibility == View.VISIBLE) {
+
+            val aniSlide: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_bottom_down)
+            bottomView.startAnimation(aniSlide)
+            bottomView.visibility =  View.GONE
+        } else {
+            super.onBackPressed()
+
+        }
+
+
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         var doesTransactionSucceeded = false
 
@@ -94,8 +108,7 @@ class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigation
 
     override fun onParagraphClicked(footnotes: String) {
 
-        val x = bottomView
-        val textview = x.findViewById<TextView>(R.id._foot_note_text)
+        val textview = bottomView.findViewById<TextView>(R.id._foot_note_text)
 
         when (bottomView.visibility) {
             View.GONE, View.INVISIBLE -> {

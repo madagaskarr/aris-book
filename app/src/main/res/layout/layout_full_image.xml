@@ -37,8 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="@font/roboto_slab_light"
+        android:gravity="center"
         android:text="В КАЧЕСТВЕ ЗАКЛЮЧЕНИЯ, ИЛИ ПРО РАЗНЫЕ ЧУДЕСА"
         android:textColor="#000000"
         android:textSize="33dp"
@@ -46,5 +47,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_beseda_number_text_view" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_layer_name"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/_beseda_title_text_view"
+        app:lottie_rawRes="@raw/book_lottie">
+
+    </com.airbnb.lottie.LottieAnimationView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
