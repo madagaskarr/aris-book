@@ -42,7 +42,7 @@ class MyAdapter @Inject constructor(): GenericAdapter<DashboardCardProtocol>() {
             R.layout.layout_full_image -> CoverImageViewHolder(view)
             R.layout.layout_beseda_chapter -> BesedaChapterViewHolder(view, actionHandler)
             R.layout.layout_question -> QuestionViewHolder(view)
-            R.layout.layout_paragraph -> ParagrapViewHolder(view)
+            R.layout.layout_paragraph -> ParagrapViewHolder(view, actionHandler)
             R.layout.layout_single_image -> SingleImageViewHolder(view)
             R.layout.layout_testimonial -> TestimonialViewHolder(view)
             else -> BesedaViewHolder(view, actionHandler)

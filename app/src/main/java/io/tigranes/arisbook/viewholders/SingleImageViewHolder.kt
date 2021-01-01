@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import io.tigranes.arisbook.ActionHandler
 import io.tigranes.arisbook.R
 import io.tigranes.arisbook.GenericAdapter
 import io.tigranes.arisbook.model.BesedaCoverDescriptionTemplate

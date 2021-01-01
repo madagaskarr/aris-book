@@ -1,8 +1,12 @@
 package io.tigranes.arisbook
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -11,15 +15,18 @@ import io.tigranes.arisbook.fragments.ChaptersFragment
 import io.tigranes.arisbook.fragments.DashboardFragment
 import io.tigranes.arisbook.fragments.SingleChapetFragment
 
+
 class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, ActionHandler {
 
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var bottomView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         bottomNavigationView = findViewById(R.id._bottom_nav_bar)
+        bottomView = findViewById(R.id._bottom_up_view)
         bottomNavigationView.setOnNavigationItemSelectedListener(this)
         startFragmentTransaction(DashboardFragment.newInstance())
 
@@ -61,11 +68,15 @@ class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigation
 
 
     override fun onDashboardBesedaClicked(besedaID: String) {
-        Toast.makeText(this,"BESEDA - $besedaID", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "BESEDA - $besedaID", Toast.LENGTH_SHORT).show()
         supportFragmentManager
             .beginTransaction()
             .addToBackStack("ChaptersFragment")
-            .replace(R.id._bottom_navigation_activity_fragment_container, ChaptersFragment.newInstance(""))
+            .replace(
+                R.id._bottom_navigation_activity_fragment_container, ChaptersFragment.newInstance(
+                    ""
+                )
+            )
             .commit()
     }
 
@@ -74,8 +85,36 @@ class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigation
         supportFragmentManager
             .beginTransaction()
             .addToBackStack("ChaptersFragment")
-            .replace(R.id._bottom_navigation_activity_fragment_container, SingleChapetFragment.newInstance())
+            .replace(
+                R.id._bottom_navigation_activity_fragment_container,
+                SingleChapetFragment.newInstance()
+            )
             .commit()
+    }
+
+    override fun onParagraphClicked(footnotes: String) {
+
+        val x = bottomView
+        val textview = x.findViewById<TextView>(R.id._foot_note_text)
+
+        when (bottomView.visibility) {
+            View.GONE, View.INVISIBLE -> {
+                textview.text = footnotes
+                val aniSlide: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_bottom_up)
+                bottomView.startAnimation(aniSlide)
+                bottomView.visibility =  View.VISIBLE
+            }
+            View.VISIBLE -> {
+                val aniSlide: Animation = AnimationUtils.loadAnimation(applicationContext, R.anim.anim_bottom_down)
+                bottomView.startAnimation(aniSlide)
+                bottomView.visibility =  View.GONE
+            }
+        }
+
+
+
+
+
     }
 
 }
