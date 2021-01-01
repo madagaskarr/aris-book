@@ -6,8 +6,11 @@
     android:layout_width="match_parent"
     android:layout_marginBottom="6dp"
     android:paddingBottom="16dp"
-    android:background="@color/dark_black"
-    android:layout_height="wrap_content">
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:paddingTop="1dp"
+    android:background="@drawable/title_subtitle_card_style"
+    android:layout_height="550dp">
 
     <TextView
         android:id="@+id/_beseda_with_chapter_title_text_view"

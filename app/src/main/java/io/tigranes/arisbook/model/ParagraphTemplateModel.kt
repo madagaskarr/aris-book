@@ -1,8 +1,8 @@
 package io.tigranes.arisbook.model
 
-data class QuestionTemplateModel(
+data class ParagraphTemplateModel(
     val ID: String? = null,
-    val question: String?,
+    val paragraphText: String?,
 ): DashboardCardProtocol  {
-    override fun getTemplateID(): DashboardCardTemplate = DashboardCardTemplate.QUESTION
+    override fun getTemplateID(): DashboardCardTemplate = DashboardCardTemplate.PARAGRAPH
 }

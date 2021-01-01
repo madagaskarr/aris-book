@@ -8,6 +8,7 @@ import io.tigranes.arisbook.providers.BookMockProvider
 import io.tigranes.arisbook.repositories.BookRepository
 import io.tigranes.arisbook.viewmodels.ChaptersViewModel
 import io.tigranes.arisbook.viewmodels.DashboardViewModel
+import io.tigranes.arisbook.viewmodels.SingleChapterViewModel
 import javax.inject.Singleton
 
 
@@ -19,6 +20,12 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DashboardViewModel::class)
     abstract fun bindDashboardViwModel(dashboardViewModel: DashboardViewModel): ViewModel
+
+    @Singleton
+    @Binds
+    @IntoMap
+    @ViewModelKey(SingleChapterViewModel::class)
+    abstract fun bindSingleChapterViewModel(chaptersViewModel: SingleChapterViewModel): ViewModel
 
     @Singleton
     @Binds

@@ -9,6 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.android.support.DaggerAppCompatActivity
 import io.tigranes.arisbook.fragments.ChaptersFragment
 import io.tigranes.arisbook.fragments.DashboardFragment
+import io.tigranes.arisbook.fragments.SingleChapetFragment
 
 class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener, ActionHandler {
 
@@ -70,6 +71,11 @@ class MainActivity: DaggerAppCompatActivity(), BottomNavigationView.OnNavigation
 
     override fun onChapterClicked(chpterID: String) {
         Toast.makeText(this, chpterID, Toast.LENGTH_SHORT).show()
+        supportFragmentManager
+            .beginTransaction()
+            .addToBackStack("ChaptersFragment")
+            .replace(R.id._bottom_navigation_activity_fragment_container, SingleChapetFragment.newInstance())
+            .commit()
     }
 
 }

@@ -1,8 +1,8 @@
 package io.tigranes.arisbook.model
 
-data class SingleImageTemplateModel(
+data class TestimonialTemplateModel(
     val ID: String? = null,
-    val imageSource: String?,
+    val testimonialText: String?,
 ): DashboardCardProtocol  {
-    override fun getTemplateID(): DashboardCardTemplate = DashboardCardTemplate.SINGLE_IMAGE
+    override fun getTemplateID(): DashboardCardTemplate = DashboardCardTemplate.TESTIMONIAL
 }

@@ -54,7 +54,7 @@ class ChaptersFragment : DaggerFragment() {
 
 
         dashboardRecyclerView = view.findViewById(R.id._chapters_recycler_view)
-        dashboardRecyclerView.layoutManager = LinearLayoutManager(context)
+        dashboardRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         dashboardRecyclerView.adapter = adapter
         adapter.setActionHandler(actionHandler)
         adapter.setItems(chaptersViewModel.getAllBesedas())
